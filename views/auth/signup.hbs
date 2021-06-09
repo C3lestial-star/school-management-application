@@ -1,0 +1,86 @@
+<div class="main-container">
+  <div class="first-container">
+
+    <img class="project-logo" src="/images/Logo.png" />
+    <div class="form-contianer">
+      <form action="/signup" method="post">
+        <h2 class="login-h2">Sign up</h2>
+        <div class="mb-3">
+          <label for="exampleInputEmail1" class="form-label">Email</label>
+          <input
+            type="email"
+            name="email"
+            class="form-control"
+            id="exampleInputEmail1"
+            aria-describedby="emailHelp"
+          />
+          <div id="emailHelp" class="form-text">We'll never share your email
+            with anyone else.</div>
+        </div>
+        <div class="mb-3">
+          <label for="password" class="form-label">Password</label>
+          <input type="password" name="password" class="form-control" />
+        </div>
+        <div class="mb-3">
+          <label for="repeatpassword" class="form-label">Confirm Password</label>
+          <input type="password" name="repeatpassword" class="form-control" />
+        </div>
+        <hr />
+        <div class="mb-3">
+          <label for="exampleInputUsername" class="form-label">Full Name</label>
+          <input
+            type="text"
+            class="form-control"
+            name="name"
+            id="exampleInputUsername"
+            aria-describedby="UsernameHelp"
+          />
+        </div>
+        <div class="mb-3">
+          <label for="exampleInputTelNumber" class="form-label">Contact number</label>
+          <input
+            type="tel"
+            name="contact"
+            class="form-control"
+            id="exampleInputTelNumber"
+            aria-describedby="UsernameHelp"
+            placeholder="06-31635474"
+          />
+        </div>
+        <div class="form-check">
+          <input
+            class="form-check-input"
+            type="radio"
+            name="role"
+            value="teacher"
+            id="flexRadioDefault1"
+          />
+          <label class="form-check-label" for="flexRadioDefault1">
+            Register as teacher
+          </label>
+        </div>
+        <div class="form-check">
+          <input
+            class="form-check-input"
+            type="radio"
+            name="role"
+            value="admin"
+            id="flexRadioDefault2"
+            checked
+          />
+          <label class="form-check-label" for="flexRadioDefault2">
+            Register as admin
+          </label>
+        </div>
+        <div class="btns-container">
+          <a class="btn-login btn btn-light" href="/">Login</a>
+          <button type="submit" class="btn btn-primary">Sign up</button>
+        </div>
+        {{#if errorMessage}}
+          <p class="error">{{errorMessage}}</p>
+        {{/if}}
+      </form>
+    </div>
+  </div>
+  <div class="second-container"></div>
+</div>
