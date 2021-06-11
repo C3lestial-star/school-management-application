@@ -16,13 +16,17 @@
 
 .first-container {
   display: flex;
+  flex: 0 0 80rem;
   flex-direction: column;
   height: 100vh;
   background-color: rgb(235, 228, 228);
+  animation-name: shrinkContainer;
 }
 
 .second-container {
+  display: flex;
   color: white;
+  flex-shrink: 1;
   font-size: 3rem;
   height: 100vh;
   background-color: 6eed6d;
@@ -88,4 +92,14 @@ hr {
 
 .btns-container {
   margin-top: 2rem;
+}
+
+@media (max-width: 900px) {
+  .first-container {
+    flex-shrink: 1;
+  }
+
+  .form-contianer {
+    width: 70%;
+  }
 }

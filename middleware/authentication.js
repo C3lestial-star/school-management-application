@@ -1,5 +1,4 @@
-const Teacher = require("../models/teacher");
-const Admin = require("../models/admin");
+const Staff = require("../models/staff");
 
 module.exports = (req, res, next) => {
   const { repeatpassword, password, name, email, contact, role } = req.body;
@@ -21,31 +20,18 @@ module.exports = (req, res, next) => {
     });
     return;
   }
-
-  if (role === "teacher") {
-    Teacher.findOne({ email })
-      .then((user) => {
-        // 2. Check user does not already exist
-        if (user !== null) {
-          res.render("auth/login", {
-            message: "Email already exists",
-            style: "signup.css",
-          });
-          return;
-        }
-      })
-      .catch((err) => next(err));
-  } else if (role === "admin") {
-    Admin.findOne({ email }).then((user) => {
+  Staff.findOne({ email })
+    .then((user) => {
       // 2. Check user does not already exist
       if (user !== null) {
-        res.render("auth/signup", {
+        res.render("auth/login", {
           message: "Email already exists",
           style: "signup.css",
         });
         return;
       }
-    });
-  }
+    })
+    .catch((err) => next(err));
+
   next();
 };

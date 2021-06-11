@@ -12,31 +12,34 @@ const bcrypt = require("bcrypt");
 const bcryptSalt = 10;
 
 //require models
-const Teacher = require("../models/teacher");
 const Student = require("../models/student");
-const Admin = require("../models/admin");
+const Staff = require("../models/staff");
 const Parent = require("../models/parent");
 
 // .get() route ==> home page before you login
-router.get("/", (req, res) => {
-  res.render("auth/login", { style: "login", title: "Login" });
+router.get(["/", "/login"], (req, res) => {
+  Staff.findOne({ email: "mohamud.issa@ymail.com" }).then((user) =>
+    console.log(user)
+  );
+  res.render("auth/login", { style: "login.css", title: "Login" });
 });
 
-// .post() route ==> home page before you login
-// router.post("/", passport.authenticate('local'), (req, res) => {
-//   res.render("auth/login", { style: "login.css", title: "Login" });
-// });
+// Login Logic
+// middleware
 router.post(
   "/login",
   passport.authenticate("local", {
     successRedirect: "/dashboard",
-    failureRedirect: "/",
-  })
+    failureRedirect: "/signup",
+  }),
+  function (req, res) {
+    console.log("login triggered");
+  }
 );
 
 // .get() route ==> signup page
 router.get("/signup", (req, res) => {
-  res.render("auth/signup", { style: "signup", title: "Sign up" });
+  res.render("auth/signup", { style: "signup.css", title: "Sign up" });
 });
 
 // .post() route ==> signup page
@@ -47,49 +50,24 @@ router.post("/signup", validation, (req, res, next) => {
   const salt = bcrypt.genSaltSync(bcryptSalt);
   const hashPass = bcrypt.hashSync(password, salt);
 
-  if (role === "teacher") {
-    // Save the user in DB
+  // Save the user in DB
+  const newStaff = new Staff({
+    name,
+    email,
+    contact,
+    role,
+    passwordHash: hashPass,
+  });
 
-    const newTeacher = new Teacher({
-      name,
-      email,
-      contact,
-      role,
-      passwordHash: hashPass,
-    });
-
-    newTeacher
-      .save()
-      .then((userDB) => {
-        return res.render("dashboard-admin", {
-          style: "dashboard-admin",
-          title: "dashboard",
-        });
-      })
-      .catch((err) => next(err));
-  } else if (role === "admin") {
-    // Save the user in DB
-
-    const newAdmin = new Admin({
-      name,
-      email,
-      contact,
-      role,
-      passwordHash: hashPass,
-    });
-
-    newAdmin
-      .save()
-      .then((userDB) => {
-        req.session.currentUser = userDB;
-        console.log(req.session);
-        return res.render("dashboard-admin", {
-          style: "dashboard-admin",
-          title: "dashboard",
-        });
-      })
-      .catch((err) => next(err));
-  }
+  newStaff
+    .save()
+    .then((userDB) => {
+      return res.render("dashboard-admin", {
+        style: "dashboard-admin.css",
+        title: "dashboard",
+      });
+    })
+    .catch((err) => next(err));
 });
 
 module.exports = router;

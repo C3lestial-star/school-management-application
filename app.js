@@ -4,9 +4,11 @@ const app = express();
 const hbs = require("hbs");
 const path = require("path");
 const passport = require("passport");
-require("./configs/passport")(passport);
+// require("./configs/passport")(passport);
 const LocalStrategy = require("passport-local").Strategy;
 const session = require("express-session");
+const passportLocalMongoose = require("passport-local-mongoose");
+const User = require("./models/staff");
 
 //require session config
 require("./configs/session")(app);
@@ -28,11 +30,45 @@ app.use(express.static(path.join(__dirname, "public")));
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
-//require database config
+//require passport config
 require("./configs/passport");
 
 app.use(passport.initialize());
 app.use(passport.session());
+
+//use passport local strategy
+passport.use(
+  new LocalStrategy(
+    {
+      usernameField: "email",
+      passwordField: "password",
+    },
+    function (username, password, done) {
+      User.findOne({ email: username }, function (err, user) {
+        console.log(user);
+        if (err) {
+          return done(err);
+        }
+        if (!user) {
+          return done(null, false, { message: "Incorrect username." });
+        }
+        if (!user.validPassword(password)) {
+          return done(null, false, { message: "Incorrect password." });
+        }
+        return done(null, user);
+      });
+    }
+  )
+);
+
+//serialize and deserialize
+passport.serializeUser((user, done) => {
+  done(null, user);
+});
+
+passport.deserializeUser((user, done) => {
+  done(null, user);
+});
 
 // Routes middleware
 app.use("/", indexRouter);

@@ -1,7 +1,7 @@
-$(document).ready(function () {
-  $("#sidebarCollapse").on("click", function () {
-    $("#sidebar").toggleClass("active");
-  });
-});
+const menu = document.getElementById("wrapper");
 
-alert("it works");
+const button = document.getElementById("menu-toggle");
+
+button.onclick = function () {
+  menu.classList.toggle("toggled");
+};

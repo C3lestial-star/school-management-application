@@ -4,11 +4,7 @@ const router = new Router();
 
 // .get() route ==> signup page
 router.get("/dashboard", (req, res) => {
-  console.log("hallo");
-  res.render("dashboard-admin", {
-    style: "dashboard-admin",
-    title: "dashboard",
-  });
+  res.render("dashboard-admin", { style: "dashboard-admin.css" });
 });
 
 module.exports = router;

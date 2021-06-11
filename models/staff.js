@@ -1,7 +1,8 @@
 const mongoose = require("mongoose");
-const { Schema, model } = require("mongoose");
+const passportLocalMongoose = require("passport-local-mongoose");
+const bcrypt = require("bcrypt");
 
-const userSchema = new Schema(
+const userSchema = new mongoose.Schema(
   {
     name: {
       type: String,
@@ -31,4 +32,10 @@ const userSchema = new Schema(
   }
 );
 
-module.exports = model("Teacher", userSchema);
+userSchema.methods.validPassword = function (pwd) {
+  return bcrypt.compare(pwd, this.passwordHash);
+};
+
+userSchema.plugin(passportLocalMongoose);
+
+module.exports = mongoose.model("Staff", userSchema);
