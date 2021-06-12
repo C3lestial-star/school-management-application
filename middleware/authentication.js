@@ -1,4 +1,4 @@
-const Staff = require("../models/staff");
+const Staff = require("../models/model.staff");
 
 module.exports = (req, res, next) => {
   const { repeatpassword, password, name, email, contact, role } = req.body;

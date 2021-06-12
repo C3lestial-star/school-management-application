@@ -5,23 +5,20 @@ const router = new Router();
 const express = require("express");
 const passport = require("passport");
 require("./index.routes");
-require("../configs/passport");
 
 // Bcrypt to encrypt passwords
 const bcrypt = require("bcrypt");
 const bcryptSalt = 10;
 
 //require models
-const Student = require("../models/student");
-const Staff = require("../models/staff");
-const Parent = require("../models/parent");
+const Student = require("../models/model.student");
+const Staff = require("../models/model.staff");
+const Parent = require("../models/model.parent");
 
 // .get() route ==> home page before you login
 router.get(["/", "/login"], (req, res) => {
-  Staff.findOne({ email: "mohamud.issa@ymail.com" }).then((user) =>
-    console.log(user)
-  );
-  res.render("auth/login", { style: "login.css", title: "Login" });
+  Staff.findOne({ email: "mohamud.issa@ymail.com" });
+  res.render("auth/login", { style: "login-page.css", title: "Login" });
 });
 
 // Login Logic
@@ -32,14 +29,12 @@ router.post(
     successRedirect: "/dashboard",
     failureRedirect: "/signup",
   }),
-  function (req, res) {
-    console.log("login triggered");
-  }
+  function (req, res) {}
 );
 
 // .get() route ==> signup page
 router.get("/signup", (req, res) => {
-  res.render("auth/signup", { style: "signup.css", title: "Sign up" });
+  res.render("auth/signup", { style: "signup-page.css", title: "Sign up" });
 });
 
 // .post() route ==> signup page

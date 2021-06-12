@@ -130,15 +130,15 @@ body {
   }
 }
 
-.dashboard-page {
-  background-color: rgb(68, 68, 68);
-}
-
 #menu-toggle {
   background-color: #f8f9fa;
   float: left !important;
   outline: none;
   left: 0;
+}
+
+.student-page {
+  background-color: rgb(68, 68, 68);
 }
 
 .sidebar-logo {
@@ -154,7 +154,6 @@ body {
   padding: 8px 10px;
   margin-right: 20px;
 }
-
 .lang-selector {
   display: inline-block;
   vertical-align: middle;

@@ -4,11 +4,8 @@ const app = express();
 const hbs = require("hbs");
 const path = require("path");
 const passport = require("passport");
-// require("./configs/passport")(passport);
 const LocalStrategy = require("passport-local").Strategy;
-const session = require("express-session");
-const passportLocalMongoose = require("passport-local-mongoose");
-const User = require("./models/staff");
+const User = require("./models/model.staff");
 
 //require session config
 require("./configs/session")(app);
@@ -29,9 +26,6 @@ app.set("views", path.join(__dirname, "views"));
 app.use(express.static(path.join(__dirname, "public")));
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
-
-//require passport config
-require("./configs/passport");
 
 app.use(passport.initialize());
 app.use(passport.session());
