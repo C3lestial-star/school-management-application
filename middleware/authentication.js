@@ -6,7 +6,7 @@ module.exports = (req, res, next) => {
   if (!email || !password) {
     res.render("auth/signup", {
       errorMessage: "Please fill in required fields",
-      style: "signup.css",
+      style: "signup-page.css",
       title: "Sign up",
     });
     return;
@@ -15,7 +15,7 @@ module.exports = (req, res, next) => {
   if (repeatpassword !== password) {
     res.render("auth/signup", {
       errorMessage: "Passwords do not match",
-      style: "signup.css",
+      style: "signup-page.css",
       title: "Sign up",
     });
     return;
@@ -25,8 +25,8 @@ module.exports = (req, res, next) => {
       // 2. Check user does not already exist
       if (user !== null) {
         res.render("auth/login", {
-          message: "Email already exists",
-          style: "signup.css",
+          errorMessage: "Email already exists",
+          style: "signup-page.css",
         });
         return;
       }

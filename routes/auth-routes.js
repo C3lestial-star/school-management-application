@@ -1,6 +1,7 @@
 const mongoose = require("mongoose");
 const { Router } = require("express");
-const validation = require("../middleware/authentication");
+const authentication = require("../middleware/authentication");
+const CheckAdminStatus = require("../middleware/admin-auth");
 const router = new Router();
 const express = require("express");
 const passport = require("passport");
@@ -17,7 +18,6 @@ const Parent = require("../models/model.parent");
 
 // .get() route ==> home page before you login
 router.get(["/", "/login"], (req, res) => {
-  Staff.findOne({ email: "mohamud.issa@ymail.com" });
   res.render("auth/login", { style: "login-page.css", title: "Login" });
 });
 
@@ -27,9 +27,9 @@ router.post(
   "/login",
   passport.authenticate("local", {
     successRedirect: "/dashboard",
-    failureRedirect: "/signup",
-  }),
-  function (req, res) {}
+    failureRedirect: "/login",
+    failureFlash: true,
+  })
 );
 
 // .get() route ==> signup page
@@ -38,9 +38,9 @@ router.get("/signup", (req, res) => {
 });
 
 // .post() route ==> signup page
-router.post("/signup", validation, (req, res, next) => {
+router.post("/signup", authentication, (req, res, next) => {
   const { repeatpassword, password, name, email, contact, role } = req.body;
-
+  console.log(repeatpassword, password, name, email, contact, role);
   // Encrypt the password
   const salt = bcrypt.genSaltSync(bcryptSalt);
   const hashPass = bcrypt.hashSync(password, salt);
@@ -57,12 +57,28 @@ router.post("/signup", validation, (req, res, next) => {
   newStaff
     .save()
     .then((userDB) => {
-      return res.render("dashboard-admin", {
-        style: "dashboard-admin.css",
-        title: "dashboard",
+      return res.render("auth/login", {
+        style: "login-page.css",
+        title: "login",
       });
     })
     .catch((err) => next(err));
+});
+
+// post route to logout and redirect to "/"
+router.post("/logout", (req, res) => {
+  console.log(req.session.passport);
+  req.session.destroy();
+  res.redirect("/");
+});
+
+router.get("/approvals", CheckAdminStatus, (req, res) => {
+
+  res.render("approvals-page", {
+    style: "approvals-page.css",
+    title: "Approvals",
+
+  });
 });
 
 module.exports = router;

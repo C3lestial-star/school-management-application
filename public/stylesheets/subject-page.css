@@ -141,7 +141,7 @@ body {
   left: 0;
 }
 
-.student-page {
+.subject-page {
   background-color: rgb(68, 68, 68);
 }
 
@@ -175,15 +175,15 @@ body {
 .row-cards {
   display: flex;
   justify-content: center;
+  padding: 5rem;
 }
 
 .card {
   display: flex;
   margin: 2rem;
-  height: 14rem;
+
   width: 14rem;
   justify-content: center;
-  border: none !important;
 }
 
 .circle {
@@ -208,3 +208,17 @@ body {
   text-align: center;
   color: black;
 }
+
+.card-img-top {
+  height: 250px;
+}
+
+.card-image {
+  height: 100%;
+  width: auto;
+}
+
+img {
+  object-fit: cover;
+}
+

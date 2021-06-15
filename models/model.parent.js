@@ -6,11 +6,17 @@ const userSchema = new mongoose.Schema(
       type: String,
       trim: true,
       required: [true, "Name is required"],
+      uppercase: false,
     },
-    address: {
-      houseNo: Number,
-      street: String,
-      city: String,
+    postcode: {
+      type: String,
+      required: true,
+      uppercase: false,
+    },
+    houseNo: {
+      type: String,
+      required: true,
+      uppercase: false,
     },
     contact: Number,
     email: {

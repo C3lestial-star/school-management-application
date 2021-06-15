@@ -5,7 +5,9 @@ const hbs = require("hbs");
 const path = require("path");
 const passport = require("passport");
 const LocalStrategy = require("passport-local").Strategy;
+const { flash } = require("express-flash-message");
 const User = require("./models/model.staff");
+const bcrypt = require("bcrypt");
 
 //require session config
 require("./configs/session")(app);
@@ -18,6 +20,9 @@ const MongoStore = require("connect-mongo");
 // Router
 const indexRouter = require("./routes/index.routes");
 const authRouter = require("./routes/auth-routes");
+const teacherRouter = require("./routes/teacher-routes");
+const studentRouter = require("./routes/student-routes");
+const classRouter = require("./routes/class-routes");
 
 // Express View engine and views
 app.set("view engine", "hbs");
@@ -39,18 +44,17 @@ passport.use(
     },
     function (username, password, done) {
       User.findOne({ email: username }, function (err, user) {
-        console.log(user);
         if (err) {
           return done(err);
         }
         if (!user) {
           return done(null, false, { message: "Incorrect username." });
         }
-        if (!user.validPassword(password)) {
+        if (!bcrypt.compareSync(password, user.passwordHash)) {
           return done(null, false, { message: "Incorrect password." });
         }
-        return done(null, user);
-      });
+        done(null, user);
+      }).catch((err) => done(err));
     }
   )
 );
@@ -64,9 +68,15 @@ passport.deserializeUser((user, done) => {
   done(null, user);
 });
 
+// apply express-flash-message middleware
+app.use(flash({ sessionKeyName: "flashMessage", useCookieSession: true }));
+
 // Routes middleware
 app.use("/", indexRouter);
 app.use("/", authRouter);
+app.use("/", teacherRouter);
+app.use("/", studentRouter);
+app.use("/", classRouter);
 
 // this matches all routes and all methods - Error when route can't be found
 app.use((req, res, next) => {

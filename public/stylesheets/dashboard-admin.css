@@ -205,3 +205,25 @@ body {
   text-align: center;
   color: black;
 }
+
+.notification-title {
+  color: red;
+  text-decoration: underline;
+  margin-bottom: 10px;
+  margin-left: 5px;
+}
+
+.notification-container {
+  border: 1px solid black;
+  padding: 1rem;
+  border-radius: 5px;
+}
+
+.error {
+  background: #f02b63;
+  box-sizing: border-box;
+  color: #fff;
+  margin: 20px auto;
+  padding: 20px;
+  width: 100%;
+}

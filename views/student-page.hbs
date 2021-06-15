@@ -19,7 +19,9 @@
       <li>
         <a class="student-page" href="/student">Student</a>
       </li>
-    </ul>
+      <li>
+        <a href="/approvals">Approvals</a>
+      </li>
     </ul>
   </div>
   <!-- /#sidebar-wrapper -->
@@ -58,14 +60,92 @@
     </ul>
 
     <!-- main section -->
-    <div class="row-cards">
-      <div class="card">
-        <div class="circle">
-          <img src="/images/female_icon-removebg-preview.png" />
-          <h5 class="icon-text">120 Girls</h5>
+    <form action="/registerStudent" method="post" class="row-cards">
+      <h3 class="addStudent-title">Add student</h3>
+      <div class="boxstyling-container">
+        <div class="form-container-student">
+          <h5 class="form-title">Student details</h5>
+          <div class="registration form-group">
+            <label for="exampleInputEmail1">Full Name</label>
+            <input
+              type="text"
+              class="form-control"
+              name="studentName"
+              placeholder="Mohamed Ali"
+              required
+            />
+          </div>
+          <div class="form-group">
+            <label for="exampleInputdate">Date of Birth</label>
+            <input type="date" name="dob" class="form-control" required />
+          </div>
+
         </div>
 
+        <div class="form-container-parent">
+          <h5 class="form-title">Parent details</h5>
+          <div class="registration form-group">
+            <label for="exampleInputEmail1">Full Name</label>
+            <input
+              type="text"
+              class="form-control"
+              name="parentName"
+              placeholder="Ali Musa"
+              required
+            />
+          </div>
+          <div class="form-group">
+            <div class="row-postcode">
+              <div class="postcode">
+                <label for="exampleInputPassword1">Postcode</label>
+                <input
+                  type="text"
+                  class="form-control"
+                  name="postcode"
+                  placeholder="1021KD"
+                  required
+                />
+              </div>
+              <div class="houseNumber">
+                <label for="exampleInputPassword1">House number</label>
+                <input
+                  type="text"
+                  class="form-control"
+                  name="houseNo"
+                  placeholder="27"
+                  required
+                />
+              </div>
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="exampleInputPassword1">Email</label>
+            <input
+              type="email"
+              class="form-control"
+              name="email"
+              placeholder="Abdi@gmail.com"
+            />
+          </div>
+          <div class="form-group">
+            <label for="exampleInputTelNumber" class="form-label">Contact number</label>
+            <input
+              type="tel"
+              name="contact"
+              class="form-control"
+              id="exampleInputTelNumber"
+              aria-describedby="UsernameHelp"
+              placeholder="06-31635474"
+              required
+            />
+          </div>
+          <button
+            type="submit"
+            class="btn add-student btn-primary"
+          >Submit</button>
+
+        </div>
       </div>
-    </div>
+    </form>
   </div>
 </div>

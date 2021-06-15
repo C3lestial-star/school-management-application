@@ -128,6 +128,10 @@ body {
     position: relative;
     margin-right: 0;
   }
+
+  .addStudent-title {
+    display: block;
+  }
 }
 
 #menu-toggle {
@@ -148,7 +152,7 @@ body {
 
 .selectpicker {
   height: 70%;
-  background-color: #f8f9fa;
+  background-color: #e0e0e0;
   border: none;
   color: black;
   padding: 8px 10px;
@@ -171,6 +175,7 @@ body {
 .row-cards {
   display: flex;
   justify-content: center;
+  padding: 3rem;
 }
 
 .card {
@@ -198,9 +203,61 @@ body {
 
 .row-cards {
   flex-wrap: wrap;
+  background-color: #f8f9fa;
+  margin-top: 3rem;
+  border-radius: 0.5rem;
+  padding: 0.2rem 0rem;
+  border: 1px dotted #5cdae0;
 }
 
 .icon-text {
   text-align: center;
   color: black;
+}
+
+.form-container-parent {
+  padding: 1rem 3rem;
+  width: 29rem;
+  margin: 1rem;
+}
+
+.form-container-student {
+  padding: 1rem 3rem;
+  width: 29rem;
+  margin: 1rem;
+}
+
+.boxstyling-container {
+  display: flex;
+  border-top: 2px solid black;
+  border-bottom: 2px solid black;
+  border-bottom-left-radius: 1rem;
+  border-top-left-radius: 1rem;
+  border-bottom-right-radius: 1rem;
+  flex-wrap: wrap;
+  justify-content: center;
+  margin: 2rem;
+  width: fit-content;
+}
+
+.add-student {
+  margin-top: 2rem;
+}
+
+.form-title {
+  margin-bottom: 1rem;
+  text-decoration: underline;
+  color: #fc9167;
+}
+
+.addStudent-title {
+  color: red;
+  position: relative;
+  margin: auto 3rem;
+}
+
+.houseNumber,
+.postcode {
+  display: inline-block;
+  width: 49.5%;
 }

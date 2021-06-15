@@ -19,6 +19,9 @@
       <li>
         <a href="/student">Student</a>
       </li>
+      <li>
+        <a href="/approvals">Approvals</a>
+      </li>
     </ul>
   </div>
   <!-- /#sidebar-wrapper -->
@@ -80,6 +83,30 @@
         <div class="circle"><img src="/images/class.png" /></div>
         <h5 class="icon-text">10 Classes</h5>
       </div>
+    </div>
+    <div>
+      <h5 class="notification-title">Notifications</h5>
+      <div class="notification-container">
+        <div class="notification-card">
+
+        </div>
+        <table class="table">
+          <tbody>
+            <tr>
+              <th class="tabe-number" scope="row">1</th>
+              <td class="tabe-number">this is the first notication</td>
+            </tr>
+            <tr>
+              <th class="tabe-number" scope="row">2</th>
+              <td class="tabe-number">this is the second notication</td>
+            </tr>
+          </tbody>
+        </table>
+
+      </div>
+      {{#if ErrorMessage}}
+        <p class="error">{{ErrorMessage}}</p>
+      {{/if}}
     </div>
   </div>
 </div>

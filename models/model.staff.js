@@ -25,6 +25,10 @@ const userSchema = new mongoose.Schema(
       type: String,
       enum: ["teacher", "admin"],
     },
+    access: {
+      type: Boolean,
+      default: false,
+    },
     class: [String],
   },
   {
@@ -32,8 +36,9 @@ const userSchema = new mongoose.Schema(
   }
 );
 
-userSchema.methods.validPassword = function (pwd) {
-  return bcrypt.compare(pwd, this.passwordHash);
+userSchema.methods.validPassword = async function (pwd) {
+  const match = await bcrypt.compare(pwd, this.passwordHash);
+  return match;
 };
 
 userSchema.plugin(passportLocalMongoose);
