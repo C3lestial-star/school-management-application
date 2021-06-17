@@ -25,10 +25,6 @@ const userSchema = new mongoose.Schema(
       type: String,
       enum: ["teacher", "admin"],
     },
-    access: {
-      type: Boolean,
-      default: false,
-    },
     class: [String],
   },
   {

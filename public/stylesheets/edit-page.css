@@ -169,13 +169,49 @@ body {
 
 .custom-nav-setting {
   position: relative;
-  height: 50px;
 }
 
-.toggle-float-left {
-  float: left;
+.approvals-page {
+  background-color: rgb(68, 68, 68);
 }
 
-.container-nav {
+/* main section */
+
+.mid-section-container {
+  margin: 10rem;
+}
+
+.userslist {
+  color: red;
+  text-decoration: underline;
+  margin-bottom: 10px;
+  margin-left: 5px;
+}
+
+.userslist-container {
+  border: 1px solid black;
+  padding: 1rem;
+  border-radius: 5px;
+}
+
+.form-contianer {
   display: block;
+  width: 50%;
+  height: auto;
+  padding: 2rem;
+  margin: 3rem auto;
+  border-radius: 5px;
+  background-color: white;
+  box-shadow: 2px 2px 10px grey;
+}
+
+.login-h2 {
+  text-align: center;
+  margin-bottom: 3rem;
+}
+
+@media (max-width: 1500px) {
+  .form-contianer {
+    width: 100%;
+  }
 }

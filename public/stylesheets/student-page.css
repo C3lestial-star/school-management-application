@@ -152,7 +152,7 @@ body {
 
 .selectpicker {
   height: 70%;
-  background-color: #e0e0e0;
+  background-color: #f8f9fa;
   border: none;
   color: black;
   padding: 8px 10px;
@@ -169,6 +169,7 @@ body {
 
 .custom-nav-setting {
   position: relative;
+  height: 50px;
 }
 
 /*main section*/
@@ -260,4 +261,37 @@ body {
 .postcode {
   display: inline-block;
   width: 49.5%;
+}
+
+.toggle-float-left {
+  float: left;
+}
+
+.container-nav {
+  display: block;
+}
+
+.userslist {
+  color: red;
+  text-decoration: underline;
+  margin-bottom: 10px;
+  margin-left: 5px;
+}
+
+.userslist-container {
+  border: 1px solid black;
+  padding: 1rem;
+  border-radius: 5px;
+}
+
+.mid-section-container {
+  margin-top: 5rem;
+}
+
+.radio-buttons {
+  display: inline-block;
+}
+
+.form-check {
+  display: inline-block !important;
 }

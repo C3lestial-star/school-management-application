@@ -166,6 +166,7 @@ body {
 
 .custom-nav-setting {
   position: relative;
+  height: 50px;
 }
 
 /*main section*/
@@ -226,4 +227,12 @@ body {
   margin: 20px auto;
   padding: 20px;
   width: 100%;
+}
+
+.toggle-float-left {
+  float: left;
+}
+
+.container-nav {
+  display: block;
 }

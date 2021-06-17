@@ -1,0 +1,171 @@
+<div id="wrapper">
+  <div id="sidebar-wrapper">
+    <ul class="sidebar-nav">
+      <li class="sidebar-brand">
+        <img class="sidebar-logo" src="/images/Logo-horizontal-white.png" />
+      </li>
+      <li>
+        <a href="/dashboard">Dashboard</a>
+      </li>
+      <li>
+        <a href="/class">Class</a>
+      </li>
+      <li>
+        <a href="/teacher">Teacher</a>
+      </li>
+      <li>
+        <a href="/subject">Subject</a>
+      </li>
+      <li>
+        <a href="/student">Student</a>
+      </li>
+      <li>
+        <a class="approvals-page" href="/approvals">Approvals</a>
+      </li>
+    </ul>
+  </div>
+  <!-- /#sidebar-wrapper -->
+
+  <!-- Page Content -->
+  <div id="page-content-wrapper">
+
+    <ul class="nav justify-content-end bg-light custom-nav-setting">
+
+      <span><abutton
+          href="#menu-toggle"
+          class="btn btn-default"
+          id="menu-toggle"
+        >Toggle Menu</abutton>
+      </span>
+
+      <li class="nav-item">
+        <a class="nav-link active" aria-current="page" href="#">Active</a>
+      </li>
+      <li class="nav-item">
+        <form action="/logout" method="post">
+          <button class="btn btn-submit" type="submit" name="logout-submit">
+            Logout
+          </button>
+        </form>
+      </li>
+
+      <li class="nav-item">
+        <select class="selectpicker" data-width="fit">
+          <option>EN</option>
+          <option>NL</option>
+        </select>
+      </li>
+      <li class="nav-item">
+      </li>
+    </ul>
+
+    <!-- main section -->
+    <div class="mid-section-container">
+      <h5 class="userslist">List of Users</h5>
+      <div class="userslist-container">
+        <table class="table">
+          <thead>
+            <tr>
+              <th scope="col">#</th>
+              <th scope="col">Name</th>
+              <th scope="col">Email</th>
+              <th scope="col">Role</th>
+              <th scope="col">Edit</th>
+              <th scope="col">Delete</th>
+            </tr>
+          </thead>
+          <tbody>
+            {{#staff}}
+              <tr>
+                <th class="tabe-number" scope="row">{{@index}}</th>
+                <td class="tabe-number">{{this.name}}</td>
+                <td class="tabe-number">{{this.email}}</td>
+                <td class="tabe-number">{{this.role}}</td>
+                <td class="tabe-number"><a
+                    href="/approvals/{{this.id}}/edit"
+                  >Edit</a></td>
+                <td class="tabe-number"><a
+                    href="/approvals/{{this.id}}/delete"
+                  >Delete</a></td>
+              </tr>
+            {{/staff}}
+          </tbody>
+        </table>
+      </div>
+
+      {{#userdata}}
+        <div class="form-contianer">
+          <form action="/approvals/{{this.id}}/edit" method="post">
+            <h2 class="login-h2">Edit User profile</h2>
+            <div class="mb-3">
+              <label for="exampleInputEmail1" class="form-label">Email</label>
+              <input
+                type="email"
+                name="email"
+                value="{{this.email}}"
+                class="form-control"
+                id="exampleInputEmail1"
+                aria-describedby="emailHelp"
+              />
+              <div id="emailHelp" class="form-text">We'll never share your email
+                with anyone else.</div>
+            </div>
+            <div class="mb-3">
+              <label for="exampleInputUsername" class="form-label">Full Name</label>
+              <input
+                type="text"
+                class="form-control"
+                name="name"
+                value="{{this.name}}"
+                id="exampleInputUsername"
+                aria-describedby="UsernameHelp"
+              />
+            </div>
+            <div class="mb-3">
+              <label for="exampleInputTelNumber" class="form-label">Contact
+                number</label>
+              <input
+                type="tel"
+                name="contact"
+                value="{{this.contact}}"
+                class="form-control"
+                id="exampleInputTelNumber"
+                aria-describedby="UsernameHelp"
+                placeholder="06-31635474"
+              />
+            </div>
+            <div class="form-check">
+              <input
+                class="form-check-input"
+                type="radio"
+                name="role"
+                value="teacher"
+                id="flexRadioDefault1"
+              />
+              <label class="form-check-label" for="flexRadioDefault1">
+                Register as teacher
+              </label>
+            </div>
+            <div class="form-check">
+              <input
+                class="form-check-input"
+                type="radio"
+                name="role"
+                value="admin"
+                id="flexRadioDefault2"
+                required
+              />
+              <label class="form-check-label" for="flexRadioDefault2">
+                Register as admin
+              </label>
+            </div>
+            <div class="btns-container">
+              <button type="submit" class="btn btn-primary">Edit Profile</button>
+            </div>
+          </form>
+        </div>
+      {{/userdata}}
+
+    </div>
+  </div>
+</div>

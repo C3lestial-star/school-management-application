@@ -169,6 +169,7 @@ body {
 
 .custom-nav-setting {
   position: relative;
+  height: 50px;
 }
 
 /*main section*/
@@ -222,3 +223,10 @@ img {
   object-fit: cover;
 }
 
+.toggle-float-left {
+  float: left;
+}
+
+.container-nav {
+  display: block;
+}

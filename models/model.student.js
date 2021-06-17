@@ -13,6 +13,10 @@ const userSchema = new mongoose.Schema(
       required: [true, "Please provide the DOB"],
       trim: true,
     },
+    gender: {
+      type: String,
+      enum: ["female", "male"],
+    },
     class: {
       type: String,
     },

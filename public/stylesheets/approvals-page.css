@@ -169,6 +169,7 @@ body {
 
 .custom-nav-setting {
   position: relative;
+  height: 50px;
 }
 
 .approvals-page {
@@ -176,3 +177,32 @@ body {
 }
 
 /* main section */
+
+.mid-section-container {
+  margin: 10rem;
+}
+
+.userslist {
+  color: red;
+  text-decoration: underline;
+  margin-bottom: 10px;
+  margin-left: 5px;
+}
+
+.userslist-container {
+  border: 1px solid black;
+  padding: 1rem;
+  border-radius: 5px;
+}
+
+.toggle-float-left {
+  float: left;
+}
+
+toggle-float-right {
+  float: right;
+}
+
+.container-nav {
+  display: block;
+}

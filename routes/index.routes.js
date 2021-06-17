@@ -8,6 +8,8 @@ router.get("/dashboard", isLoggedIn, (req, res) => {
   const ErrorMessage = req.session.ErrorMessage;
   delete req.session.ErrorMessage;
 
+  
+
   res.render("dashboard-admin", {
     style: "dashboard-admin.css",
     ErrorMessage: ErrorMessage,

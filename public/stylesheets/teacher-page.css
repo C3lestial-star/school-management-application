@@ -169,6 +169,7 @@ body {
 
 .custom-nav-setting {
   position: relative;
+  height: 50px;
 }
 
 /*main section*/
@@ -207,4 +208,12 @@ body {
 .icon-text {
   text-align: center;
   color: black;
+}
+
+.toggle-float-left {
+  float: left;
+}
+
+.container-nav {
+  display: block;
 }

@@ -28,51 +28,76 @@
 
   <!-- Page Content -->
   <div id="page-content-wrapper">
+    <div class="container-nav">
+      <ul
+        class="nav justify-content-end bg-light toggle-float-left custom-nav-setting"
+      >
 
-    <ul class="nav justify-content-end bg-light custom-nav-setting">
+        <li>
+          <button
+            href="#menu-toggle"
+            class="btn btn-default"
+            id="menu-toggle"
+          >Toggle Menu</button>
+        </li>
+      </ul>
+      <ul
+        class="nav justify-content-end bg-light toggle-float-right custom-nav-setting"
+      >
+        <li class="nav-item">
+          <a class="nav-link active" aria-current="page" href="#">Active</a>
+        </li>
+        <li class="nav-item">
+          <form action="/logout" method="post">
+            <button class="btn btn-submit" type="submit" name="logout-submit">
+              Logout
+            </button>
+          </form>
+        </li>
 
-      <span><abutton
-          href="#menu-toggle"
-          class="btn btn-default"
-          id="menu-toggle"
-        >Toggle Menu</abutton>
-      </span>
-
-      <li class="nav-item">
-        <a class="nav-link active" aria-current="page" href="#">Active</a>
-      </li>
-      <li class="nav-item">
-        <form action="/logout" method="post">
-          <button class="btn btn-submit" type="submit" name="logout-submit">
-            Logout
-          </button>
-        </form>
-      </li>
-
-      <li class="nav-item">
-        <select class="selectpicker" data-width="fit">
-          <option>EN</option>
-          <option>NL</option>
-        </select>
-      </li>
-      <li class="nav-item">
-      </li>
-    </ul>
-
+        <li class="nav-item">
+          <select class="selectpicker" data-width="fit">
+            <option>EN</option>
+            <option>NL</option>
+          </select>
+        </li>
+        <li class="nav-item">
+        </li>
+      </ul>
+    </div>
     <!-- main section -->
-
-    <table class="table">
-      <tbody>
-        <tr>
-          <th class="tabe-number" scope="row">1</th>
-          <td class="tabe-number">this is the first notication</td>
-        </tr>
-        <tr>
-          <th class="tabe-number" scope="row">2</th>
-          <td class="tabe-number">this is the second notication</td>
-        </tr>
-      </tbody>
-    </table>
-
+    <div class="mid-section-container">
+      <h5 class="userslist">List of Users</h5>
+      <div class="userslist-container">
+        <table class="table">
+          <thead>
+            <tr>
+              <th scope="col">#</th>
+              <th scope="col">Name</th>
+              <th scope="col">Email</th>
+              <th scope="col">Role</th>
+              <th scope="col">Edit</th>
+              <th scope="col">Delete</th>
+            </tr>
+          </thead>
+          <tbody>
+            {{#staff}}
+              <tr>
+                <th class="tabe-number" scope="row">{{@index}}</th>
+                <td class="tabe-number">{{this.name}}</td>
+                <td class="tabe-number">{{this.email}}</td>
+                <td class="tabe-number">{{this.role}}</td>
+                <td class="tabe-number"><a
+                    href="/approvals/{{this.id}}/edit"
+                  >Edit</a></td>
+                <td class="tabe-number"><a
+                    href="/approvals/{{this.id}}/delete"
+                  >Delete</a></td>
+              </tr>
+            {{/staff}}
+          </tbody>
+        </table>
+      </div>
+    </div>
   </div>
 </div>

@@ -29,36 +29,40 @@
   <!-- Page Content -->
   <div id="page-content-wrapper">
 
-    <ul class="nav justify-content-end bg-light custom-nav-setting">
+    <div class="container-nav">
+      <ul
+        class="nav justify-content-start toggle-float-left bg-light custom-nav-setting"
+      >
+        <li class="nav-item">
+          <a href="#menu-toggle" class="btn btn-default" id="menu-toggle">Toggle
+            Menu</a>
+        </li>
+      </ul>
+      <ul
+        class="nav justify-content-end toggle-float-right bg-light custom-nav-setting"
+      >
 
-      <span><abutton
-          href="#menu-toggle"
-          class="btn btn-default"
-          id="menu-toggle"
-        >Toggle Menu</abutton>
-      </span>
+        <li class="nav-item">
+          <a class="nav-link active" aria-current="page" href="#">Active</a>
+        </li>
+        <li class="nav-item">
+          <form action="/logout" method="post">
+            <button class="btn btn-submit" type="submit" name="logout-submit">
+              Logout
+            </button>
+          </form>
+        </li>
 
-      <li class="nav-item">
-        <a class="nav-link active" aria-current="page" href="#">Active</a>
-      </li>
-      <li class="nav-item">
-        <form action="/logout" method="post">
-          <button class="btn btn-submit" type="submit" name="logout-submit">
-            Logout
-          </button>
-        </form>
-      </li>
-
-      <li class="nav-item">
-        <select class="selectpicker" data-width="fit">
-          <option>EN</option>
-          <option>NL</option>
-        </select>
-      </li>
-      <li class="nav-item">
-      </li>
-    </ul>
-
+        <li class="nav-item">
+          <select class="selectpicker" data-width="fit">
+            <option>EN</option>
+            <option>NL</option>
+          </select>
+        </li>
+        <li class="nav-item">
+        </li>
+      </ul>
+    </div>
     <!-- main section -->
     <div class="row-cards">
       <div class="card">

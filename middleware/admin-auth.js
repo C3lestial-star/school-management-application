@@ -1,6 +1,6 @@
 module.exports = function isLoggedIn(req, res, next) {
   // if user is authenticated in the session, carry on
-  if (req.isAuthenticated() && req.session.passport.user.access === true) {
+  if (req.isAuthenticated() && req.session.passport.user.role === "admin") {
     return next();
   }
   req.session.ErrorMessage = `you current don't have access to that page`;

@@ -40,7 +40,7 @@ router.get("/signup", (req, res) => {
 // .post() route ==> signup page
 router.post("/signup", authentication, (req, res, next) => {
   const { repeatpassword, password, name, email, contact, role } = req.body;
-  console.log(repeatpassword, password, name, email, contact, role);
+
   // Encrypt the password
   const salt = bcrypt.genSaltSync(bcryptSalt);
   const hashPass = bcrypt.hashSync(password, salt);
@@ -72,12 +72,13 @@ router.post("/logout", (req, res) => {
   res.redirect("/");
 });
 
-router.get("/approvals", CheckAdminStatus, (req, res) => {
+router.get("/approvals", CheckAdminStatus, async (req, res) => {
+  const staffData = await Staff.find();
 
   res.render("approvals-page", {
     style: "approvals-page.css",
     title: "Approvals",
-
+    staff: staffData,
   });
 });
 
