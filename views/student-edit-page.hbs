@@ -1,0 +1,228 @@
+<div id="wrapper">
+  <div id="sidebar-wrapper">
+    <ul class="sidebar-nav">
+      <li class="sidebar-brand">
+        <img class="sidebar-logo" src="/images/Logo-horizontal-white.png" />
+      </li>
+      <li>
+        <a href="/dashboard">Dashboard</a>
+      </li>
+      <li>
+        <a href="/class">Class</a>
+      </li>
+      <li>
+        <a href="/teacher">Teacher</a>
+      </li>
+      <li>
+        <a href="/subject">Subject</a>
+      </li>
+      <li>
+        <a class="student-page" href="/student">Student</a>
+      </li>
+      <li>
+        <a href="/approvals">Approvals</a>
+      </li>
+    </ul>
+  </div>
+  <!-- /#sidebar-wrapper -->
+
+  <!-- Page Content -->
+  <div id="page-content-wrapper">
+
+    <div class="container-nav">
+      <ul
+        class="nav justify-content-end bg-light toggle-float-left custom-nav-setting"
+      >
+        <abutton
+          href="#menu-toggle"
+          class="btn btn-default"
+          id="menu-toggle"
+        >Toggle Menu</abutton>
+      </ul>
+      <ul class="nav justify-content-end bg-light custom-nav-setting">
+        <li class="nav-item">
+          <a class="nav-link active" aria-current="page" href="#">Active</a>
+        </li>
+        <li class="nav-item">
+          <form action="/logout" method="post">
+            <button class="btn btn-submit" type="submit" name="logout-submit">
+              Logout
+            </button>
+          </form>
+        </li>
+
+        <li class="nav-item">
+          <select class="selectpicker" data-width="fit">
+            <option>EN</option>
+            <option>NL</option>
+          </select>
+        </li>
+        <li class="nav-item">
+        </li>
+      </ul>
+    </div>
+    <!-- main section -->
+    <form
+      action="/student/{{oneStudent._id}}/edit"
+      method="post"
+      class="row-cards"
+    >
+      <h3 class="addStudent-title">Edit Student</h3>
+      <div class="boxstyling-container">
+        <div class="form-container-student">
+          <h5 class="form-title">Student details</h5>
+          <div class="registration form-group">
+
+            <label for="exampleInputEmail1">Full Name</label>
+            <input
+              type="text"
+              class="form-control"
+              name="studentName"
+              value={{oneStudent.name}}
+              required
+            />
+            <div class="form-group">
+              <label for="exampleInputdate">Date of Birth</label>
+              <input
+                type="date"
+                name="dob"
+                class="form-control"
+                value={{oneStudent.dob}}
+                required
+              />
+            </div>
+          </div>
+
+          <div class="form-check radio-buttons">
+            <input
+              class="form-check-input"
+              type="radio"
+              name="gender"
+              value="male"
+              id="flexRadioDefault1"
+            />
+            <label class="form-check-label" for="flexRadioDefault1">
+              Male
+            </label>
+          </div>
+          <div class="form-check radio-buttons">
+            <input
+              class="form-check-input"
+              type="radio"
+              name="gender"
+              value="female"
+              id="flexRadioDefault2"
+            />
+            <label class="form-check-label" for="flexRadioDefault2">
+              Female
+            </label>
+          </div>
+        </div>
+
+        <div class="form-container-parent">
+          {{#parent}}
+            <h5 class="form-title">Parent details</h5>
+            <div class="registration form-group">
+              <label for="exampleInputEmail1">Full Name</label>
+              <input
+                type="text"
+                class="form-control"
+                name="parentName"
+                value={{this.name}}
+                required
+              />
+
+            </div>
+            <div class="form-group">
+              <div class="row-postcode">
+                <div class="postcode">
+                  <label for="exampleInputPassword1">Postcode</label>
+                  <input
+                    type="text"
+                    class="form-control"
+                    name="postcode"
+                    value={{this.postcode}}
+                    required
+                  />
+                </div>
+                <div class="houseNumber">
+                  <label for="exampleInputPassword1">House number</label>
+                  <input
+                    type="text"
+                    class="form-control"
+                    name="houseNo"
+                    value={{this.houseNo}}
+                    required
+                  />
+                </div>
+              </div>
+            </div>
+            <div class="form-group">
+              <label for="exampleInputPassword1">Email</label>
+              <input
+                type="email"
+                class="form-control"
+                name="email"
+                value={{this.email}}
+              />
+            </div>
+            <div class="form-group">
+              <label for="exampleInputTelNumber" class="form-label">Contact
+                number</label>
+              <input
+                type="tel"
+                name="contact"
+                class="form-control"
+                id="exampleInputTelNumber"
+                aria-describedby="UsernameHelp"
+                value={{this.contact}}
+                required
+              />
+            </div>
+          {{/parent}}
+          <button
+            type="submit"
+            class="btn add-student btn-primary"
+          >edit</button>
+
+        </div>
+      </div>
+    </form>
+    <!-- student list -->
+
+    <div class="mid-section-container">
+      <h5 class="userslist">List of Users</h5>
+      <div class="userslist-container">
+        <table class="table">
+          <thead>
+            <tr>
+              <th scope="col">#</th>
+              <th scope="col">Name</th>
+              <th scope="col">DOB</th>
+
+              <th scope="col">Edit</th>
+              <th scope="col">Delete</th>
+            </tr>
+          </thead>
+          <tbody>
+            {{#students}}
+              <tr>
+                <th class="tabe-number" scope="row">{{@index}}</th>
+                <td class="tabe-number">{{this.name}}</td>
+                <td class="tabe-number">{{this.dob}}</td>
+
+                <td class="tabe-number"><a
+                    href="/student/{{this.id}}/edit"
+                  >Edit</a></td>
+                <td class="tabe-number"><a
+                    href="/student/{{this.id}}/delete"
+                  >Delete</a></td>
+              </tr>
+            {{/students}}
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+  </div>
+</div>

@@ -14,39 +14,59 @@ module.exports = async (req, res, next) => {
       contact,
     } = req.body;
 
-    let parentMongo = await Parent.findOne({ postcode: postcode, houseNo });
+    const parentMongo = await Parent.findOne({ postcode: postcode, houseNo });
 
     if (!parentMongo) {
-      parentMongo = new Parent({
+      const parentMongo = new Parent({
         name: parentName,
         postcode,
         houseNo,
         email,
         contact,
       });
-
       await parentMongo.save();
-    }
-
-    const newStudent = new Student({
-      name: studentName,
-      dob,
-      parent: parentMongo,
-      gender,
-    });
-
-    await newStudent.save();
-
-    await parentMongo.update(
-      { $push: { children: newStudent } },
-      function (error, success) {
-        if (error) {
-          console.log(error);
-        } else {
-          console.log(success);
+      const newStudent = new Student({
+        name: studentName,
+        dob,
+        parent: parentMongo,
+        gender,
+      });
+      console.log("frist time");
+      await newStudent.save();
+      console.log(newStudent);
+      await Parent.findOneAndUpdate(
+        { _id: parentMongo.id },
+        { $push: { children: [newStudent.id] } },
+        function (error, success) {
+          if (error) {
+            console.log(error);
+          } else {
+            console.log(success);
+          }
         }
-      }
-    );
+      );
+    } else {
+      const newStudent = new Student({
+        name: studentName,
+        dob,
+        parent: parentMongo,
+        gender,
+      });
+
+      await newStudent.save();
+
+      await Parent.findOneAndUpdate(
+        { _id: parentMongo.id },
+        { $push: { children: [newStudent.id] } },
+        function (error, success) {
+          if (error) {
+            console.log(error);
+          } else {
+            console.log(success);
+          }
+        }
+      );
+    }
   } catch (error) {
     console.log(error);
   }

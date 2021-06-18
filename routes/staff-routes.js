@@ -25,8 +25,8 @@ router.get("/approvals/:id/edit", isLoggedIn, async (req, res) => {
 
     const staffData = await Staff.find();
 
-    res.render("edit-page", {
-      style: "edit-page.css",
+    res.render("staff-edit-page", {
+      style: "staff-edit-page.css",
       title: "Approvals",
       staff: staffData,
       userdata: userEdit,
@@ -55,8 +55,8 @@ router.post("/approvals/:id/edit", isLoggedIn, async (req, res) => {
 
     const staffData = await Staff.find();
 
-    res.render("edit-page", {
-      style: "edit-page.css",
+    res.render("staff-edit-page", {
+      style: "staff-edit-page.css",
       title: "Edit-profiles",
       staff: staffData,
     });

@@ -1,8 +1,9 @@
 const mongoose = require("mongoose");
+const Schema = mongoose.Schema;
 const passportLocalMongoose = require("passport-local-mongoose");
 const bcrypt = require("bcrypt");
 
-const userSchema = new mongoose.Schema(
+const staffSchema = new mongoose.Schema(
   {
     name: {
       type: String,
@@ -32,11 +33,11 @@ const userSchema = new mongoose.Schema(
   }
 );
 
-userSchema.methods.validPassword = async function (pwd) {
+staffSchema.methods.validPassword = async function (pwd) {
   const match = await bcrypt.compare(pwd, this.passwordHash);
   return match;
 };
 
-userSchema.plugin(passportLocalMongoose);
+staffSchema.plugin(passportLocalMongoose);
 
-module.exports = mongoose.model("Staff", userSchema);
+module.exports = mongoose.model("Staff", staffSchema);

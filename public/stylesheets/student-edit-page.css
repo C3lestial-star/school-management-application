@@ -1,0 +1,297 @@
+/*!
+ * Start Bootstrap - Simple Sidebar (https://startbootstrap.com/)
+ * Copyright 2013-2016 Start Bootstrap
+ * Licensed under MIT (https://github.com/BlackrockDigital/startbootstrap/blob/gh-pages/LICENSE)
+ */
+
+body {
+  overflow-x: hidden;
+}
+
+/* Toggle Styles */
+
+#wrapper {
+  padding-left: 0;
+  -webkit-transition: all 0.5s ease;
+  -moz-transition: all 0.5s ease;
+  -o-transition: all 0.5s ease;
+  transition: all 0.5s ease;
+}
+
+#wrapper.toggled {
+  padding-left: 250px;
+}
+
+#sidebar-wrapper {
+  z-index: 1000;
+  position: fixed;
+  left: 250px;
+  width: 0;
+  height: 100%;
+  margin-left: -250px;
+  overflow-y: auto;
+  background: #000;
+  -webkit-transition: all 0.5s ease;
+  -moz-transition: all 0.5s ease;
+  -o-transition: all 0.5s ease;
+  transition: all 0.5s ease;
+}
+
+#wrapper.toggled #sidebar-wrapper {
+  width: 250px;
+}
+
+#page-content-wrapper {
+  width: 100%;
+  position: absolute;
+  padding: 15px;
+  width: 98%;
+}
+
+#wrapper.toggled #page-content-wrapper {
+  position: absolute;
+  margin-right: -250px;
+}
+
+/* Sidebar Styles */
+
+.sidebar-nav {
+  position: absolute;
+  top: 0;
+  width: 250px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.sidebar-nav li {
+  text-indent: 20px;
+  line-height: 40px;
+}
+
+.sidebar-nav li a {
+  display: block;
+  text-decoration: none;
+  color: #999999;
+}
+
+.sidebar-nav li a:hover {
+  text-decoration: none;
+  color: #fff;
+  background: rgba(255, 255, 255, 0.2);
+}
+
+.sidebar-nav li a:active,
+.sidebar-nav li a:focus {
+  text-decoration: none;
+}
+
+.sidebar-nav > .sidebar-brand {
+  height: 100px;
+  font-size: 18px;
+  line-height: 60px;
+}
+
+.sidebar-nav > .sidebar-brand a {
+  color: #999999;
+}
+
+.sidebar-nav > .sidebar-brand a:hover {
+  color: #fff;
+  background: none;
+}
+
+@media (min-width: 768px) {
+  #wrapper {
+    padding-left: 250px;
+  }
+
+  #wrapper.toggled {
+    padding-left: 0;
+  }
+
+  #sidebar-wrapper {
+    width: 200px;
+    overflow-x: none;
+  }
+
+  #wrapper.toggled #sidebar-wrapper {
+    width: 0;
+  }
+
+  #page-content-wrapper {
+    padding: 20px;
+    position: relative;
+  }
+
+  #wrapper.toggled #page-content-wrapper {
+    position: relative;
+    margin-right: 0;
+  }
+
+  .addStudent-title {
+    display: block;
+  }
+}
+
+#menu-toggle {
+  background-color: #f8f9fa;
+  float: left !important;
+  outline: none;
+  left: 0;
+}
+
+.student-page {
+  background-color: rgb(68, 68, 68);
+}
+
+.sidebar-logo {
+  width: 65%;
+  padding: auto;
+}
+
+.selectpicker {
+  height: 70%;
+  background-color: #f8f9fa;
+  border: none;
+  color: black;
+  padding: 8px 10px;
+  margin-right: 20px;
+}
+.lang-selector {
+  display: inline-block;
+  vertical-align: middle;
+}
+
+.nav-item {
+  color: #0d6efd;
+}
+
+.custom-nav-setting {
+  position: relative;
+  height: 50px;
+}
+
+/*main section*/
+.row-cards {
+  display: flex;
+  justify-content: center;
+  padding: 3rem;
+}
+
+.card {
+  display: flex;
+  margin: 2rem;
+  height: 14rem;
+  width: 14rem;
+  justify-content: center;
+  border: none !important;
+}
+
+.circle {
+  width: 60%;
+  height: 60%;
+  border: 5px solid #fc9167;
+  border-radius: 50%;
+  margin: auto;
+  overflow: hidden;
+}
+
+.circle > img {
+  width: 100%;
+  opacity: 50%;
+}
+
+.row-cards {
+  flex-wrap: wrap;
+  background-color: #f8f9fa;
+  margin-top: 3rem;
+  border-radius: 0.5rem;
+  padding: 0.2rem 0rem;
+  border: 1px dotted #5cdae0;
+}
+
+.icon-text {
+  text-align: center;
+  color: black;
+}
+
+.form-container-parent {
+  padding: 1rem 3rem;
+  width: 29rem;
+  margin: 1rem;
+}
+
+.form-container-student {
+  padding: 1rem 3rem;
+  width: 29rem;
+  margin: 1rem;
+}
+
+.boxstyling-container {
+  display: flex;
+  border-top: 2px solid black;
+  border-bottom: 2px solid black;
+  border-bottom-left-radius: 1rem;
+  border-top-left-radius: 1rem;
+  border-bottom-right-radius: 1rem;
+  flex-wrap: wrap;
+  justify-content: center;
+  margin: 2rem;
+  width: fit-content;
+}
+
+.add-student {
+  margin-top: 2rem;
+}
+
+.form-title {
+  margin-bottom: 1rem;
+  text-decoration: underline;
+  color: #fc9167;
+}
+
+.addStudent-title {
+  color: red;
+  position: relative;
+  margin: auto 3rem;
+}
+
+.houseNumber,
+.postcode {
+  display: inline-block;
+  width: 49.5%;
+}
+
+.toggle-float-left {
+  float: left;
+}
+
+.container-nav {
+  display: block;
+}
+
+.userslist {
+  color: red;
+  text-decoration: underline;
+  margin-bottom: 10px;
+  margin-left: 5px;
+}
+
+.userslist-container {
+  border: 1px solid black;
+  padding: 1rem;
+  border-radius: 5px;
+}
+
+.mid-section-container {
+  margin-top: 5rem;
+}
+
+.radio-buttons {
+  display: inline-block;
+}
+
+.form-check {
+  display: inline-block !important;
+}

@@ -2,17 +2,27 @@ const mongoose = require("mongoose");
 const { Router } = require("express");
 const router = new Router();
 const isLoggedIn = require("../middleware/isLoggedIn");
+const Student = require("../models/model.student");
+const Staff = require("../models/model.staff");
 
 // .get() route ==> signup page
-router.get("/dashboard", isLoggedIn, (req, res) => {
+router.get("/dashboard", isLoggedIn, async (req, res) => {
   const ErrorMessage = req.session.ErrorMessage;
   delete req.session.ErrorMessage;
 
-  
+  const studentsBoys = (await Student.find({ gender: "male" })).length;
+  const studentsGirls = (await Student.find({ gender: "female" })).length;
+  const numberOfStaff = (await Staff.find({})).length;
+  const data = {
+    staff: numberOfStaff,
+    boys: studentsBoys,
+    girls: studentsGirls,
+  };
 
   res.render("dashboard-admin", {
     style: "dashboard-admin.css",
     ErrorMessage: ErrorMessage,
+    data,
   });
 });
 

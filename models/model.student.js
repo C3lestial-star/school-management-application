@@ -1,6 +1,7 @@
 const mongoose = require("mongoose");
+const Schema = mongoose.Schema;
 
-const userSchema = new mongoose.Schema(
+const studentSchema = new mongoose.Schema(
   {
     name: {
       type: String,
@@ -9,7 +10,7 @@ const userSchema = new mongoose.Schema(
       required: [true, "Name is required"],
     },
     dob: {
-      type: Date,
+      type: String,
       required: [true, "Please provide the DOB"],
       trim: true,
     },
@@ -28,4 +29,4 @@ const userSchema = new mongoose.Schema(
   }
 );
 
-module.exports = mongoose.model("Student", userSchema);
+module.exports = mongoose.model("Student", studentSchema);

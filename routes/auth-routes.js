@@ -18,7 +18,11 @@ const Parent = require("../models/model.parent");
 
 // .get() route ==> home page before you login
 router.get(["/", "/login"], (req, res) => {
-  res.render("auth/login", { style: "login-page.css", title: "Login" });
+  res.render("auth/login", {
+    style: "login-page.css",
+    title: "Login",
+    errorMessage: req.flash("error"),
+  });
 });
 
 // Login Logic

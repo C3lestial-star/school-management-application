@@ -5,9 +5,9 @@ const hbs = require("hbs");
 const path = require("path");
 const passport = require("passport");
 const LocalStrategy = require("passport-local").Strategy;
-const { flash } = require("express-flash-message");
 const User = require("./models/model.staff");
 const bcrypt = require("bcrypt");
+const flash = require("connect-flash");
 
 //require session config
 require("./configs/session")(app);
@@ -33,6 +33,7 @@ hbs.registerPartials(__dirname + "/views/partials");
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
+app.use(flash());
 app.use(passport.initialize());
 app.use(passport.session());
 

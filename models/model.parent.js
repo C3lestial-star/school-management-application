@@ -1,6 +1,7 @@
 const mongoose = require("mongoose");
+const Schema = mongoose.Schema;
 
-const userSchema = new mongoose.Schema(
+const parentSchema = new mongoose.Schema(
   {
     name: {
       type: String,
@@ -33,4 +34,4 @@ const userSchema = new mongoose.Schema(
   }
 );
 
-module.exports = mongoose.model("Parent", userSchema);
+module.exports = mongoose.model("Parent", parentSchema);
