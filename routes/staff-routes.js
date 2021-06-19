@@ -25,6 +25,7 @@ router.get("/approvals/:id/edit", isLoggedIn, async (req, res) => {
       title: "Approvals",
       staff: staffData,
       userdata: userEdit,
+      user: req.session.passport.user.name,
     });
   } catch (error) {
     console.log(error);
@@ -33,7 +34,7 @@ router.get("/approvals/:id/edit", isLoggedIn, async (req, res) => {
 
 router.post("/approvals/:id/edit", isLoggedIn, async (req, res) => {
   const { name, email, contact, role } = req.body;
-
+  req.session.passport.user.name = name;
   const { id } = req.params;
 
   try {
