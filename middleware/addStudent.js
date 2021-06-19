@@ -24,6 +24,7 @@ module.exports = async (req, res, next) => {
         email,
         contact,
       });
+
       await parentMongo.save();
       const newStudent = new Student({
         name: studentName,
@@ -31,12 +32,12 @@ module.exports = async (req, res, next) => {
         parent: parentMongo,
         gender,
       });
-      console.log("frist time");
+
       await newStudent.save();
-      console.log(newStudent);
+
       await Parent.findOneAndUpdate(
         { _id: parentMongo.id },
-        { $push: { children: [newStudent.id] } },
+        { $push: { children: newStudent.id } },
         function (error, success) {
           if (error) {
             console.log(error);
@@ -57,7 +58,7 @@ module.exports = async (req, res, next) => {
 
       await Parent.findOneAndUpdate(
         { _id: parentMongo.id },
-        { $push: { children: [newStudent.id] } },
+        { $push: { children: newStudent.id } },
         function (error, success) {
           if (error) {
             console.log(error);

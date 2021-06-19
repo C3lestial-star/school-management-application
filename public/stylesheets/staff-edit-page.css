@@ -169,6 +169,7 @@ body {
 
 .custom-nav-setting {
   position: relative;
+  height: 50px;
 }
 
 .approvals-page {
@@ -214,4 +215,20 @@ body {
   .form-contianer {
     width: 100%;
   }
+}
+
+.toggle-float-left {
+  float: left;
+}
+
+toggle-float-right {
+  float: right;
+}
+
+.container-nav {
+  display: block;
+}
+
+.table {
+  width: 100%;
 }

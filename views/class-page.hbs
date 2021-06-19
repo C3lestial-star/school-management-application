@@ -11,9 +11,6 @@
         <a class="dashboard-page" href="/class">Class</a>
       </li>
       <li>
-        <a href="/teacher">Teacher</a>
-      </li>
-      <li>
         <a href="/subject">Subject</a>
       </li>
       <li>
@@ -29,40 +26,81 @@
   <!-- Page Content -->
   <div id="page-content-wrapper">
 
-    <ul
-      class="nav justify-content-end bg-light toggle-float-left custom-nav-setting"
-    >
-
-      <span><abutton
+    <div class="container-nav">
+      <ul
+        class="nav justify-content-end bg-light toggle-float-left custom-nav-setting"
+      >
+        <abutton
           href="#menu-toggle"
           class="btn btn-default"
           id="menu-toggle"
         >Toggle Menu</abutton>
-      </span>
-    </ul>
-    <ul class="nav justify-content-end bg-light custom-nav-setting">
-      <li class="nav-item">
-        <a class="nav-link active" aria-current="page" href="#">Active</a>
-      </li>
-      <li class="nav-item">
-        <form action="/logout" method="post">
-          <button class="btn btn-submit" type="submit" name="logout-submit">
-            Logout
-          </button>
-        </form>
-      </li>
+      </ul>
+      <ul class="nav justify-content-end bg-light custom-nav-setting">
+        <li class="nav-item">
+          <a class="nav-link active" aria-current="page" href="#">{{user}}</a>
+        </li>
+        <li class="nav-item">
+          <form action="/logout" method="post">
+            <button class="btn btn-submit" type="submit" name="logout-submit">
+              Logout
+            </button>
+          </form>
+        </li>
 
-      <li class="nav-item">
-        <select class="selectpicker" data-width="fit">
-          <option>EN</option>
-          <option>NL</option>
-        </select>
-      </li>
-      <li class="nav-item">
-      </li>
-    </ul>
-
+        <li class="nav-item">
+          <select class="selectpicker" data-width="fit">
+            <option>EN</option>
+            <option>NL</option>
+          </select>
+        </li>
+        <li class="nav-item">
+        </li>
+      </ul>
+    </div>
     <!-- main section -->
+    <div class="card-container">
 
+      <div class="card" style="width: 25rem;">
+        <div class="card-body">
+          <h5 class="card-title">Class: O1A</h5>
+          <h6 class="card-subtitle mb-2 text-muted">Card subtitle</h6>
+          <p class="card-text">Some quick example text to build on the card
+            title and make up the bulk of the card's content.</p>
+          <a href="/class" class="card-link">Class list</a>
+
+        </div>
+      </div>
+
+      <div class="card" style="width: 25rem;">
+        <div class="card-body">
+          <h5 class="card-title">Class: O5A</h5>
+          <h6 class="card-subtitle mb-2 text-muted">Card subtitle</h6>
+          <p class="card-text">Some quick example text to build on the card
+            title and make up the bulk of the card's content.</p>
+          <a href="/class" class="card-link">Class list</a>
+
+        </div>
+      </div>
+      <div class="card" style="width: 25rem;">
+        <div class="card-body">
+          <h5 class="card-title">Class: O4B</h5>
+          <h6 class="card-subtitle mb-2 text-muted">Card subtitle</h6>
+          <p class="card-text">Some quick example text to build on the card
+            title and make up the bulk of the card's content.</p>
+          <a href="/class" class="card-link">Class list</a>
+
+        </div>
+      </div>
+      <div class="card" style="width: 25rem;">
+        <div class="card-body">
+          <h5 class="card-title">Class: O2A</h5>
+          <h6 class="card-subtitle mb-2 text-muted">Card subtitle</h6>
+          <p class="card-text">Some quick example text to build on the card
+            title and make up the bulk of the card's content.</p>
+          <a href="/class" class="card-link">Class list</a>
+        </div>
+      </div>
+    </div>
   </div>
 </div>

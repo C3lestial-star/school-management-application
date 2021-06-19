@@ -11,9 +11,6 @@
         <a href="/class">Class</a>
       </li>
       <li>
-        <a href="/teacher">Teacher</a>
-      </li>
-      <li>
         <a href="/subject">Subject</a>
       </li>
       <li>
@@ -45,7 +42,7 @@
         class="nav justify-content-end bg-light toggle-float-right custom-nav-setting"
       >
         <li class="nav-item">
-          <a class="nav-link active" aria-current="page" href="#">Active</a>
+          <a class="nav-link active" aria-current="page" href="#">{{user}}</a>
         </li>
         <li class="nav-item">
           <form action="/logout" method="post">
@@ -67,8 +64,10 @@
     </div>
     <!-- main section -->
     <div class="mid-section-container">
-      <h5 class="userslist">List of Users</h5>
+
+      <h5 class="userslist">Staff list</h5>
       <div class="userslist-container">
+
         <table class="table">
           <thead>
             <tr>
@@ -98,6 +97,7 @@
           </tbody>
         </table>
       </div>
+
     </div>
   </div>
 </div>

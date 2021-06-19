@@ -17,6 +17,7 @@ router.get("/student", isLoggedIn, async (req, res) => {
   res.render("student-page", {
     style: "student-page.css",
     students: allStudents,
+    user: req.session.passport.user.name,
   });
 });
 
@@ -51,6 +52,7 @@ router.get("/student/:id/edit", isLoggedIn, async (req, res) => {
       oneStudent: studentData,
       parent: parentData,
       students: allStudents,
+      user: req.session.passport.user.name,
     });
   } catch (error) {
     console.log(error);
@@ -61,7 +63,7 @@ router.post("/student/:id/edit", async (req, res) => {
   const { id } = req.params;
   const { gender, studentName, postcode, houseNo, parentName, email, contact } =
     req.body;
-  console.log(studentName, postcode, houseNo, parentName, email, contact, id);
+
   try {
     const studentDB = await Student.findByIdAndUpdate(
       { _id: id },

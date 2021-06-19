@@ -5,7 +5,10 @@ const isLoggedIn = require("../middleware/isLoggedIn");
 
 // .get() route ==> class
 router.get("/class", isLoggedIn, (req, res) => {
-  res.render("class-page", { style: "class-page.css" });
+  res.render("class-page", {
+    style: "class-page.css",
+    user: req.session.passport.user.name,
+  });
 });
 
 module.exports = router;

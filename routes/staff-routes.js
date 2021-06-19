@@ -4,11 +4,6 @@ const router = new Router();
 const isLoggedIn = require("../middleware/isLoggedIn");
 const Staff = require("../models/model.staff");
 
-// .get() route ==> teacher
-router.get("/teacher", isLoggedIn, (req, res) => {
-  res.render("teacher-page", { style: "teacher-page.css" });
-});
-
 router.get("/approvals/:id/delete", isLoggedIn, (req, res) => {
   const { id } = req.params;
 
@@ -38,9 +33,8 @@ router.get("/approvals/:id/edit", isLoggedIn, async (req, res) => {
 
 router.post("/approvals/:id/edit", isLoggedIn, async (req, res) => {
   const { name, email, contact, role } = req.body;
-  console.log(name, email, contact, role);
+
   const { id } = req.params;
-  console.log(id);
 
   try {
     const userEdit = await Staff.findOneAndUpdate(
@@ -55,11 +49,7 @@ router.post("/approvals/:id/edit", isLoggedIn, async (req, res) => {
 
     const staffData = await Staff.find();
 
-    res.render("staff-edit-page", {
-      style: "staff-edit-page.css",
-      title: "Edit-profiles",
-      staff: staffData,
-    });
+    res.redirect("/approvals");
   } catch (error) {
     console.log(error);
   }

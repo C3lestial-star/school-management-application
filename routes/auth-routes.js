@@ -71,7 +71,6 @@ router.post("/signup", authentication, (req, res, next) => {
 
 // post route to logout and redirect to "/"
 router.post("/logout", (req, res) => {
-  console.log(req.session.passport);
   req.session.destroy();
   res.redirect("/");
 });
@@ -83,6 +82,7 @@ router.get("/approvals", CheckAdminStatus, async (req, res) => {
     style: "approvals-page.css",
     title: "Approvals",
     staff: staffData,
+    user: req.session.passport.user.name,
   });
 });
 

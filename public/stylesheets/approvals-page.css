@@ -111,7 +111,7 @@ body {
   }
 
   #sidebar-wrapper {
-    width: 200px;
+    width: 250px;
     overflow-x: none;
   }
 
@@ -179,7 +179,7 @@ body {
 /* main section */
 
 .mid-section-container {
-  margin: 10rem;
+  margin-top: 10rem;
 }
 
 .userslist {
@@ -192,7 +192,10 @@ body {
 .userslist-container {
   border: 1px solid black;
   padding: 1rem;
+  margin: 0 auto;
   border-radius: 5px;
+  width: 100%;
+  min-width: 40rem;
 }
 
 .toggle-float-left {
@@ -205,4 +208,8 @@ toggle-float-right {
 
 .container-nav {
   display: block;
+}
+
+.table {
+  width: 100%;
 }
